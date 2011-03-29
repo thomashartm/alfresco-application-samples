@@ -1,0 +1,26 @@
+Maven Ziele:
+
+-----------------------------------------
+Erstellen eines Eclipse Projects:
+
+mvn eclipse:eclipse
+-----------------------------------------
+Eclipse Projekt neu erstellen und hinzugekommene Abhängigkeiten auflösen:
+
+mvn eclipse:clean eclipse:eclipse
+-----------------------------------------
+Projekt neu bauen (jar landet dann im target Verzeichnis):
+
+mvn clean package
+-----------------------------------------
+Projekt neu bauen, ohne Unit Test (jar landet dann im target Verzeichnis):
+
+mvn clean package -DskipTests=True
+-----------------------------------------
+Unit Tests ausführen:
+
+mvn clean test
+-----------------------------------------
+Projekt bauen und Artefakt im lokalen Maven Repository installieren:
+
+mvn clean install

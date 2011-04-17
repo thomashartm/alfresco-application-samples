@@ -1,0 +1,42 @@
+<model name="exauth:model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Extended authorization model</description>
+	<author>Thomas Hartmann</author>
+	<version>1.0</version>
+
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+
+	<namespaces>
+		<namespace
+			uri="http://www.alfresco.com/model/extdended/auth/1.0"
+			prefix="exauth" />
+	</namespaces>
+
+	<aspects>
+		<aspect name="exauth:passwordExtension">
+			<title>Password Extension</title>
+			<properties>
+				<property name="exauth:passwordHistory">
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+					<multiple>true</multiple>
+					<index enabled="false" />
+				</property>
+				<property name="exauth:lastModification">
+					<type>d:datetime</type>
+					<mandatory>false</mandatory>
+					<index enabled="false" />
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+
+</model>

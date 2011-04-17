@@ -1,0 +1,13 @@
+This project configuration is based on Gab's alfresco m2alfresco bootstrap concept.
+See http://code.google.com/p/maven-alfresco-archetypes/ for detailed information.
+
+==================================================
+First steps to start after your initial checkout:
+
+1. Run Gab's m2bootstrap script to import the alfresco dependencies into your local mavenrepo.
+2. Create an eclipse project by running
+> mvn eclipse:eclipse
+3. Import the project into your eclipse workspace.
+4. Adjust the properties section within the pom.xml to your local conditions.
+5. Build the project and to deploy the packaged jar to your alfresco acceptance system. 
+> mvn clean install

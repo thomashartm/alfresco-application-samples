@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+    <bean id="authentication.dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+        <property name="models">
+            <list>
+                <value>alfresco/extension/models/custom-authentication-model.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- AOP interceptor for the authentication service -->
+    
+    <!-- Advices -->
+    <bean id="authenticationServiceAdvice" class="org.alfresco.extension.authentication.aop.AuthenticationServiceAdvice" lazy-init="true">
+        <property name="approvers">
+		  <list>
+		      <ref bean="passwordLengthConstraint" />
+              <ref bean="passwordRegexConstraint" />
+		      <ref bean="passwordHistoryConstraint" />
+		  </list>
+        </property>
+    </bean>
+
+    <bean id="passwordLengthConstraint" class="org.alfresco.extension.authentication.constraint.PasswordLengthConstraint">
+        <property name="allowEqualPasswords" value="false" />
+    </bean>
+
+    <bean id="passwordRegexConstraint" class="org.alfresco.extension.authentication.constraint.PasswordRegexConstraint">
+        <property name="allowPattern" value="[a-zA-Z0-9]*" />
+    </bean>
+    
+    <bean id="passwordHistoryConstraint" class="org.alfresco.extension.authentication.constraint.PasswordHistoryConstraint" >
+        <property name="nodeService" ref="nodeService" />
+        <property name="personService" ref="personService" />
+        <!-- Set to -1 to disable any history boundary-->
+        <property name="maxHistoryEntries" value="3" />
+    </bean>
+
+    <!-- Pointcut -->
+    <bean id="authenticationServiceNameMatchMethodPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedNames">
+            <list>
+                <value>updateAuthentication*</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Advisor -->
+    <bean id="authenticationServiceAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="authenticationServiceNameMatchMethodPointcut" />
+        <property name="advice" ref="authenticationServiceAdvice" />
+    </bean>
+
+    <bean id="authenticationServiceAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="proxyTargetClass" value="true" />
+        <property name="beanNames">
+            <list>
+                <value>authenticationService</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>authenticationServiceAdvisor</value>
+            </list>
+        </property>
+    </bean>
+</beans>

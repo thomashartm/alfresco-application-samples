@@ -1,0 +1,28 @@
+.supplierToolbox div.link
+{
+   float: left;
+}
+
+.supplierToolbox div.actions
+{
+   float: right;
+}
+
+.supplierToolbox div.detail-list-item
+{
+   height : 1em;
+}
+
+.supplierToolboxs div.actions a.details
+{
+   background-image: url(../images/link-details-16.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   padding: 1em;
+   cursor: pointer;
+}
+
+.supplierToolbox div.description
+{
+   clear: left;
+}

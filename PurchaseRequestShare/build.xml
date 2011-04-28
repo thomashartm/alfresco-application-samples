@@ -1,0 +1,31 @@
+<project basedir="." default="deploy.all" name="Purchase Request Share Build">
+
+	<property file="build.properties" />
+	<property name="project" value="." />
+
+	<!-- Target Directories-->
+	<property name="share.shared" value="${share.tomcat}/shared/classes" />
+	<property name="share.shared.ext" value="${share.shared}/alfresco/web-extension" />
+	<property name="share.webapp" value="${share.tomcat}/webapps/share" />
+
+	<!-- Source Directories-->
+	<property name="web.dir" value="${project}/src/main/resources/META-INF" />
+	<property name="config.dir" value="${project}/src/main/resources/alfresco" />
+
+	<target name="deploy.ext" >
+		<copy todir="${share.shared.ext}" overwrite="true"
+            verbose="true">
+			<fileset dir="${config.dir}" />
+		</copy>
+	</target>
+
+	<target name="deploy.ui">
+		<copy todir="${share.webapp}">
+			<fileset dir="${web.dir}">
+				<exclude name="**/*-context.xml"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploy.all" depends="deploy.ext, deploy.ui"/>
+</project>

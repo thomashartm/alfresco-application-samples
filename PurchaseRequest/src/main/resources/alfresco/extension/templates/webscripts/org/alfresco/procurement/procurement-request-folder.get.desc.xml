@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Return procurement folder within a space</shortname>
+  <description>Returns a procurement folder within a space. One is created if the required folder does not exits</description>
+  <url>/procurement/api/requestdestination/site/{site}</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

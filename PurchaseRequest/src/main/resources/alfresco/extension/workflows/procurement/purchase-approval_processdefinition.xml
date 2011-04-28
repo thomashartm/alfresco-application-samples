@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="urn:jbpm.org:jpdl-3.1"
+	name="wf:purchaseRequest">
+
+	<swimlane name="initiator" />
+
+    <start-state name="start">
+        <task name="wf:submitReviewTask" swimlane="initiator" />
+        <transition name="" to="review" />
+    </start-state>
+
+	<swimlane name="reviewer">
+		<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+			<actor>#{bpm_assignee}</actor>
+		</assignment>
+	</swimlane>
+	
+
+	<task-node name="review">
+		<task name="wf:reviewTask" swimlane="reviewer">
+			<event type="task-create">
+			 <script>
+             </script>
+			</event>
+		</task>
+		<transition name="approve" to="approved">
+			<action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+				<script>
+					<expression>
+						logger.log("Hello purchaseRequest has been approved!");
+                    </expression>
+				</script>
+			</action>
+		</transition>
+		
+		<transition name="reject" to="rejected">
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    <expression>
+                        logger.log("Hello purchaseRequest has been rejected!");
+                    </expression>
+                </script>
+            </action>
+        </transition>
+	</task-node>
+
+    <swimlane name="procurement">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <actor>bernhard</actor>
+        </assignment>
+    </swimlane>
+
+    <task-node name="rejected">
+        <task name="wf:rejectedTask" swimlane="procurement" />
+        <transition name="" to="end" />
+    </task-node>
+
+	<task-node name="approved">
+		<task name="wf:approvedTask" swimlane="procurement" />
+		<transition name="" to="end" />
+	</task-node>
+
+	<end-state name="end" />
+
+</process-definition>

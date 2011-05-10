@@ -5,7 +5,7 @@ function main()
    var site = siteService.getSite(siteId);
    
    //TODO determine by a localized properties file
-   var containerId = "procurement-requests";
+   var containerId = "Procurement";
    
    if (site === null)
    {
@@ -13,16 +13,18 @@ function main()
       return null;
    }
    
+   //var companyHome = companyhome.childByNamePath()
    var docLib = site.getContainer("documentLibrary");
    
    var node = docLib.childByNamePath(containerId);
+   //var node = companyhome.childByNamePath(containerId);
    if (node === null)
    {
       node = docLib.createFolder(containerId);
-  
+      node.addAspect("proc:workflowConfiguration");
       if (node === null)
       {
-      	 status.setCode(status.STATUS_NOT_FOUND, "Unable to fetch container '" + containerId + "' of site '" + siteId + "'. (No write permission?)");
+      	 status.setCode(status.STATUS_NOT_FOUND, "Unable to create container '" + containerId + "' within site '" + siteId + "'. (No write permission?)");
      	   return null;
       }
    }

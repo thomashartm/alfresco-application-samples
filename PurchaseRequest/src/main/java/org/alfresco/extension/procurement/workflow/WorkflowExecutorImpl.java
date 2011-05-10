@@ -21,6 +21,13 @@ import org.alfresco.service.namespace.QName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * The WorkflowExecutorImpl start runs a @link(WorkflowJob). 
+ * It creates a workflow package, adds all workflow properties and starts the workflow.
+ * 
+ * @author Thomas Hartmann
+ *
+ */
 public class WorkflowExecutorImpl {
 
 	private static final String PACKAGE_TO_PAYLOAD_ASSOCIATION_NAME = "Workflowcontent";
@@ -34,7 +41,7 @@ public class WorkflowExecutorImpl {
 	}
 
 	/**
-	 * Runs the specified workflow with the specified payload and assigned it to the specified assignee.
+	 * Runs the specified workflow job (including a payload) and assignes it to the specified assignee.
 	 * 
 	 * @param job A job description that contains the relevant content and meta information for each workflow.
 	 */

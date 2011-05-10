@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<page>
-   <title>Create procurement request</title>
-   <title-id>page.create-procurement-request.title</title-id>
-   <description>Create text-based content</description>
-   <description-id>page.create-procurement-request.description</description-id>
-   <template-instance>create-procurement-request</template-instance>
-   <authentication>user</authentication>
-</page>

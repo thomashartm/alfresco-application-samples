@@ -5,17 +5,22 @@
 
 	<!-- Target Directories-->
 	<property name="share.shared" value="${share.tomcat}/shared/classes" />
-	<property name="share.shared.ext" value="${share.shared}/alfresco/web-extension" />
+	<property name="share.shared.ext" value="${share.shared}/alfresco" />
 	<property name="share.webapp" value="${share.tomcat}/webapps/share" />
 
 	<!-- Source Directories-->
 	<property name="web.dir" value="${project}/src/main/resources/META-INF" />
-	<property name="config.dir" value="${project}/src/main/resources/alfresco" />
-
+	<property name="web-extension.dir" value="${project}/src/main/resources/alfresco/web-extension" />
+	<property name="messages.dir" value="${project}/src/main/resources/alfresco/messages" />
+	
 	<target name="deploy.ext" >
-		<copy todir="${share.shared.ext}" overwrite="true"
+		<copy todir="${share.shared.ext}/web-extension" overwrite="true"
             verbose="true">
-			<fileset dir="${config.dir}" />
+			<fileset dir="${web-extension.dir}" />
+		</copy>
+		<copy todir="${share.shared.ext}/messages" overwrite="true"
+	            verbose="true">
+			<fileset dir="${messages.dir}" />
 		</copy>
 	</target>
 

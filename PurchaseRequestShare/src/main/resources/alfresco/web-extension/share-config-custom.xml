@@ -23,15 +23,16 @@
 		<forms>
 			<!-- Default Create Content form -->
 	        <form>
-                <edit-form template="/form/templates/two-column.ftl" />
                 <field-visibility>
-                
+                    
                     <show id="proc:number" />
                     <show id="proc:status" />
                     
                     <show id="cm:name" />
                     <show id="cm:description" force="true" />
-
+                    
+                    <show id="proc:approve" />
+                   
                     <show id="proc:number" />
                     <show id="proc:isProject" />
                     <show id="proc:costCenterId" />
@@ -43,55 +44,66 @@
                     <show id="cm:created" for-mode="view" />
                     <show id="cm:modifier" for-mode="view" />
                     <show id="cm:modified" for-mode="view" />
-                    
+                    <show id="alf:destination" />
                 </field-visibility>
 
                 <appearance>
-                    <set id="caseinfo" appearance="panel" label="Beschaffungsantrag" />
-                    <set id="details" appearance="panel" label="Detailinformation" />
-                    <set id="meta" appearance="fieldset" label="Metainformation" />
+                    <set id="caseinfo" appearance="panel" label-id="label.pr.procurement-request" label="Beschaffungsantrag" />
+                    <set id="details" appearance="panel" label-id="label.pr.details" label="Detailinformation" />
+                    <set id="meta" appearance="fieldset" label-id="label.pr.metadata" label="Metainformation" />
                     
-                    
-                    <field id="proc:status" label="Status" description="Stand des Antrags." set="caseinfo">
+                    <field id="proc:status" label-id="label.pr.status" label="Status" description="Stand des Antrags." set="caseinfo">
                         <control template="/org/alfresco/components/form/controls/info.ftl" />
                     </field>
                     
-                    <field id="proc:number" label="Nummer" description="Wir automatisch erzeugt." set="caseinfo">
+                    <field id="proc:number" label-id="label.pr.number" label="Number" description="Wird automatisch erzeugt." set="caseinfo">
                         <control template="/org/alfresco/components/form/controls/info.ftl" />
                     </field>
                     
-                    <field id="cm:name" label="Bestellungsüberschrift" set="details" description="Bitte einen ausdrucksstarken Titel eintragen.">
+                    <field id="cm:name" label-id="label.pr.order-title" label="Order Title" set="details" description="Bitte einen ausdrucksstarken Titel eintragen.">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl" />
                     </field>
                     
-                    <field id="cm:description" set="details" label="Bestellung" description="Bitte die Bestellung und die exakte Menge eintragen.">
+                    <field id="cm:description" set="details" label-id="label.pr.order-details" label="Order Details" description="Bitte die Bestellung und die exakte Menge eintragen.">
                         <control>
                             <control-param name="rows">10</control-param>
                             <control-param name="columns">30</control-param>
                         </control>
                     </field>
 
-                    <field id="proc:department"  label="Abteilung" set="meta">
+                   <field id="proc:approve" set="meta" label-id="label.pr.approver" label="Approver">
+                      <control>
+                         <control-param name="compactMode">true</control-param>
+                      </control>
+                    </field>
+
+                    <field id="proc:destination" set="meta" label="Destination" >
+                     <control template="/org/alfresco/components/form/controls/association.ftl" />
+                    </field>
+
+                    <field id="proc:department"  label-id="label.pr.department" label="Department" set="meta">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl" >
                             <control-param name="size">25</control-param>
                             <control-param name="maxLength">25</control-param>
                         </control>
                     </field>
                     
-                    <field id="proc:isProject" label="Projektbezug vorhanden?" set="meta" description="Handelt es sich um eine projektbezogene Bestellung?">
+                    <field id="proc:isProject" label-id="label.pr.is-project" label="Belongs to a project?" set="meta" description="Is it a project driven procurement?">
                         <control template="/org/alfresco/components/form/controls/checkbox.ftl" />
                     </field>
                     
-                    <field id="proc:costCenterId"  label="Kostenstelle" set="meta">
+                    <field id="proc:costCenterId"  label-id="label.pr.costcenter" label="Costcenter" set="meta">
                         <control template="/org/alfresco/components/form/controls/number.ftl" >
                             <control-param name="size">10</control-param>
                             <control-param name="maxLength">10</control-param>
                         </control>
                     </field>
                     
-                    <field id="proc:requiredDeliveryDate"  label="Lieferung bis?" set="meta">
+                    <field id="proc:requiredDeliveryDate"  label-id="label.pr.delivery-until" label="Delivery until?" set="meta">
                         <control template="/org/alfresco/components/form/controls/date.ftl" />
                     </field>
+                    
+                    
                 </appearance>
             </form>
 		</forms>
@@ -100,17 +112,18 @@
 	<!-- Form Configuration (for existing nodes) -->
 	<config evaluator="node-type" condition="proc:request">
         <forms>
-            <!-- Default Create Content form -->
+            <!-- Default Edit Content form -->
             <form>
-                <edit-form template="/form/templates/two-column.ftl" />
                 <field-visibility>
-                
+                    
                     <show id="proc:number" />
                     <show id="proc:status" />
                     
                     <show id="cm:name" />
                     <show id="cm:description" force="true" />
-
+                    
+                    <hide id="proc:approve" for-mode="edit" />
+                    <show id="proc:approve" for-mode="view" />
                     <show id="proc:number" />
                     <show id="proc:isProject" />
                     <show id="proc:costCenterId" />
@@ -126,51 +139,54 @@
                 </field-visibility>
 
                 <appearance>
-                    <set id="caseinfo" appearance="panel" label="Beschaffungsantrag" />
-                    <set id="details" appearance="panel" label="Detailinformation" />
-                    <set id="meta" appearance="fieldset" label="Metainformation" />
+                    <set id="caseinfo" appearance="panel" label-id="label.pr.procurement-request" label="Beschaffungsantrag" />
+                    <set id="details" appearance="panel" label-id="label.pr.details" label="Detailinformation" />
+                    <set id="meta" appearance="fieldset" label-id="label.pr.metadata" label="Metainformation" />
                     
-                    
-                    <field id="proc:status" label="Status" description="Stand des Antrags." set="caseinfo">
+                    <field id="proc:status" label-id="label.pr.status" label="Status" description="Stand des Antrags." set="caseinfo">
                         <control template="/org/alfresco/components/form/controls/info.ftl" />
                     </field>
                     
-                    <field id="proc:number" label="Nummer" description="Wir automatisch erzeugt." set="caseinfo">
+                    <field id="proc:number" label-id="label.pr.number" label="Number" description="Wird automatisch erzeugt." set="caseinfo">
                         <control template="/org/alfresco/components/form/controls/info.ftl" />
                     </field>
                     
-                    <field id="cm:name" label="Bestellungsüberschrift" set="details" description="Bitte einen ausdrucksstarken Titel eintragen.">
+                    <field id="cm:name" label-id="label.pr.order-title" label="Order Title" set="details" description="Bitte einen ausdrucksstarken Titel eintragen.">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl" />
                     </field>
                     
-                    <field id="cm:description" set="details" label="Bestellung" description="Bitte die Bestellung und die exakte Menge eintragen.">
+                    <field id="cm:description" set="details" label-id="label.pr.order-details" label="Order Details" description="Bitte die Bestellung und die exakte Menge eintragen.">
                         <control>
                             <control-param name="rows">10</control-param>
                             <control-param name="columns">30</control-param>
                         </control>
                     </field>
 
-                    <field id="proc:department"  label="Abteilung" set="meta">
+                    <field id="proc:department"  label-id="label.pr.department" label="Department" set="meta">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl" >
                             <control-param name="size">25</control-param>
                             <control-param name="maxLength">25</control-param>
                         </control>
                     </field>
                     
-                    <field id="proc:isProject" label="Projektbezug vorhanden?" set="meta" description="Handelt es sich um eine projektbezogene Bestellung?">
+                    <field id="proc:approve" label-id="label.pr.approver" label="Approver" read-only="true" />
+                    
+                    <field id="proc:isProject" label-id="label.pr.is-project" label="Belongs to a project?" set="meta" description="Is it a project driven procurement?">
                         <control template="/org/alfresco/components/form/controls/checkbox.ftl" />
                     </field>
                     
-                    <field id="proc:costCenterId"  label="Kostenstelle" set="meta">
+                    <field id="proc:costCenterId"  label-id="label.pr.costcenter" label="Costcenter" set="meta">
                         <control template="/org/alfresco/components/form/controls/number.ftl" >
                             <control-param name="size">10</control-param>
                             <control-param name="maxLength">10</control-param>
                         </control>
                     </field>
                     
-                    <field id="proc:requiredDeliveryDate"  label="Lieferung bis?" set="meta">
+                    <field id="proc:requiredDeliveryDate"  label-id="label.pr.delivery-until" label="Delivery until?" set="meta">
                         <control template="/org/alfresco/components/form/controls/date.ftl" />
                     </field>
+                    
+                    
                 </appearance>
             </form>
         </forms>
@@ -190,7 +206,7 @@
 
 			<!-- LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, 
 				Ctrl, Shift, Shift). This flag automatically activates logging on page load. -->
-			<client-debug-autologging>false</client-debug-autologging>
+			<client-debug-autologging>true</client-debug-autologging>
 		</flags>
 	</config>
 

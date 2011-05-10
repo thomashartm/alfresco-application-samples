@@ -24,10 +24,12 @@
  * @class Alfresco.dashlet.SiteLinks
  */
 (function() {
-	/**
-	 * YUI Library aliases
-	 */
-	var Event = YAHOO.util.Event;
+
+	   /**
+	    * YUI Library aliases
+	    */
+	   var Dom = YAHOO.util.Dom,
+	      Event = YAHOO.util.Event;
 
 	/**
 	 * Site dashboard ProcurementActions.
@@ -38,8 +40,9 @@
 	 */
 	Alfresco.dashlet.ProcurementActions = function ProcurementActions_constructor(
 			htmlId) {
-		return Alfresco.dashlet.ProcurementActions.superclass.constructor.call(
+		Alfresco.dashlet.ProcurementActions.superclass.constructor.call(
 				this, "Alfresco.dashlet.ProcurementActions", htmlId);
+		return this;
 	};
 
 	YAHOO.extend(Alfresco.dashlet.ProcurementActions, Alfresco.component.Base, {
@@ -74,21 +77,31 @@
 
 		/**
 		 * Fired by YUI Link when the "Create link" link is clicked
-		 * @method onCreateLinkClick
+		 * 
+		 * @method onCreateProcurementRequestClick Executes on a link click
 		 * @param event {domEvent} DOM event
 		 */
 		onCreateProcurementRequestClick : function SL_onCreateProcurementRequestButtonClick(e) {
 			Event.stopEvent(e);
-			window.location = this.createContentFormURI("proc:request");
+			window.location = this.createRedirectToFromUri("proc:request");
 		},
 
-		createContentFormURI : function SL_createFormURI(itemId) {
-			var uri = Alfresco.util.uriTemplate("sitepage", {
-				site : this.options.siteId,
-				pageid : "create-content"
-			});
+		/**
+		 * Creates a redirect URI to a creation form
+		 * 
+		 * @method createRedirectToFromUri
+		 * @param itemId The content model type to create
+		 */
+		createRedirectToFromUri : function SL_createRedirectToFormUri(itemId) {
+			var redirectUri = Alfresco.util.uriTemplate("sitepage", {
+                site : this.options.siteId,
+                pageid : "create-procurement-request"
+            });	
 
-			return uri + "?itemId=" + itemId + "&destination=" + this.options.destinationNodeRef
+	        return YAHOO.lang.substitute(redirectUri + "?itemId={itemId}&destination={destination}", {
+	        	itemId: itemId,
+	        	destination: this.options.destinationNodeRef
+	    	});
 		}
 	});
 })();

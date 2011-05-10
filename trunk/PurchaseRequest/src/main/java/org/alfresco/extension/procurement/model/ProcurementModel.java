@@ -24,6 +24,8 @@ public interface ProcurementModel {
 	public static final QName TYPE_PROCUREMENT_REQUEST_DEPARTMENT = QName.createQName(PROC_NAMESPACE, "department");
 	public static final QName TYPE_PROCUREMENT_REQUEST_STATUS = QName.createQName(PROC_NAMESPACE, "status");
 	public static final QName TYPE_PROCUREMENT_REQUEST_DELIVERUNTIL = QName.createQName(PROC_NAMESPACE, "requiredDeliveryDate");
+	public static final QName TYPE_PROCUREMENT_REQUEST_APPROVER = QName.createQName(PROC_NAMESPACE, "approve");
+	
 	public static final QName TYPE_PROCUREMENT_REQUEST_TITLE = QName.createQName(CM_NAMESPACE, "title");
 	public static final QName TYPE_PROCUREMENT_REQUEST_BODY = QName.createQName(CM_NAMESPACE, "description");
 	//Default Types

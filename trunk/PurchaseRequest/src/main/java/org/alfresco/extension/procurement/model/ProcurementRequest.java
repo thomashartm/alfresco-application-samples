@@ -30,7 +30,7 @@ public class ProcurementRequest {
 		this.department = (String) properties.get(ProcurementModel.TYPE_PROCUREMENT_REQUEST_DEPARTMENT);
 		this.status = (String) properties.get(ProcurementModel.TYPE_PROCUREMENT_REQUEST_STATUS);
 		this.deliverUntil = (Date) properties.get(ProcurementModel.TYPE_PROCUREMENT_REQUEST_DELIVERUNTIL);
-		this.title = (String) properties.get(ProcurementModel.TYPE_PROCUREMENT_REQUEST_TITLE);
+		this.title = (String) properties.get(ProcurementModel.TYPE_NAME);
 		this.orderBody = (String) properties.get(ProcurementModel.TYPE_PROCUREMENT_REQUEST_BODY);
 	}
 
@@ -66,6 +66,10 @@ public class ProcurementRequest {
 		return orderBody;
 	}
 
+	/**
+	 * TODO: Replace by XSL serializer
+	 * @return
+	 */
 	public String createTextOutput(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("Nummer: ").append(getNumber()).append("\n");

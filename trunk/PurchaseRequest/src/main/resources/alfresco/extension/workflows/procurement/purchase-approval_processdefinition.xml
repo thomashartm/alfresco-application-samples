@@ -24,6 +24,7 @@
              </script>
 			</event>
 		</task>
+		
 		<transition name="approve" to="approved">
 			<action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
 				<script>
@@ -45,19 +46,13 @@
         </transition>
 	</task-node>
 
-    <swimlane name="procurement">
-        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
-            <actor>bernhard</actor>
-        </assignment>
-    </swimlane>
-
     <task-node name="rejected">
-        <task name="wf:rejectedTask" swimlane="procurement" />
+        <task name="wf:rejectedTask" swimlane="initiator" />
         <transition name="" to="end" />
     </task-node>
 
 	<task-node name="approved">
-		<task name="wf:approvedTask" swimlane="procurement" />
+		<task name="wf:approvedTask" swimlane="initiator" />
 		<transition name="" to="end" />
 	</task-node>
 

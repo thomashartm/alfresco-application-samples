@@ -27,7 +27,6 @@
 					<value>In Review</value>
 					<value>Approved</value>
 					<value>Rejected</value>
-					<value>Complete</value>
 				</list>
 			</parameter>
 		</constraint>
@@ -83,6 +82,19 @@
 				</property>
 
 			</properties>
+			<associations>
+	            <association name="proc:approve">
+	               <source>
+	                  <mandatory>true</mandatory>
+	                  <many>true</many>
+	               </source>
+	               <target>
+	                  <class>cm:person</class>
+	                  <mandatory>false</mandatory>
+	                  <many>false</many>
+	               </target>
+	            </association>
+	        </associations>
 
 			<mandatory-aspects>
 				<aspect>cm:versionable</aspect>
@@ -90,16 +102,20 @@
 		</type>
 
 	</types>
-	
-	
+
+
 	<aspects>
-	   <!-- Name of the default workflow for the associated contents -->
-		<aspect name="proc:processContainer">
+		<!-- Name of the default workflow for the associated contents ... not in use at the moment-->
+		<aspect name="proc:workflowConfiguration">
 			<title></title>
 			<properties>
 				<property name="proc:workflow">
 					<type>d:text</type>
-					<mandatory>false</mandatory>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="proc:assignee">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
 				</property>
 			</properties>
 		</aspect>

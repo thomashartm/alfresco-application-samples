@@ -38,11 +38,16 @@
 	
 	<bean id="procurementTypePolicy" class="org.alfresco.extension.procurement.model.ProcurementRequestType" init-method="init">
         <constructor-arg index="0" ref="ServiceRegistry" />
-        <constructor-arg index="1" ref="workflowExecutor" />
+        <constructor-arg index="1" ref="myWorkflowExecutor" />
         <property name="policyComponent" ref="policyComponent" />
+        <property name="idGenerator" ref="idGenerator" />
     </bean>
 
-    <bean id="workflowExecutor" class="org.alfresco.extension.procurement.workflow.WorkflowExecutorImpl">
+    <bean id="myWorkflowExecutor" class="org.alfresco.extension.procurement.workflow.WorkflowExecutorImpl">
+        <constructor-arg index="0" ref="ServiceRegistry" />
+    </bean>
+
+    <bean id="idGenerator" class="org.alfresco.extension.procurement.model.IdGenerator">
         <constructor-arg index="0" ref="ServiceRegistry" />
     </bean>
 

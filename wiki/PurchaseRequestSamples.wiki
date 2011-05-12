@@ -1,5 +1,5 @@
 #labels Alfresco,Share,Phase-Design,Samples,Phase-Deploy
-#sidebar TableOfContents
+<wiki:toc max_depth="1" />
 
 = What are the Purchase Request Samples =
 
@@ -21,17 +21,15 @@ The whole project is and will be work in progress as I still has some rough edge
 
 The project of two artifacts a repository and a share artifacts that can be deployed as simple jar files. To ease the development and to have a clear seperation on development level, the whole sample application has been split into two seperate projects.
 
-The Purchase Request repository module that contains:
+The *Purchase Request Repository artifact* that contains:
   * The content model defining a PurchaseRequest content type.
   * Some behaviour for the custom content type. The behaviour triggers the creation of a request number, triggers the creation of the binary request form and starts the workflow if an assignee has been selected.  
   * The approval workflow definition including a java code to start workflows from a behaviour.
   * A simple webscript that creates a "Procurement" folder within the actual share site.
 
-Purchase Request Share module contains:
+The *Purchase Request Share artifact* contains:
   * The custom content types form configuration (create and edit mode)
   * A dashlet to trigger the content creation
-
----- 
 
 = Installation and Configuration =
 
@@ -69,5 +67,9 @@ mvn eclipse:eclipse
   # Build and deploy the Share artifact {{{mvn clean install}}}
   # Restart your Alfresco instance and check the log for errors.
   # Login to Alfresco Share and add the Purchase Request dashlet to a  Share Site Dashboard.
-  # To verify that everything is in place and running just click the link. Edit and submit the form and check if the document has been created, all values have been filled out correctly and that the workflow has been started and assigned to the approver.
+  # To verify that everything is in place and works just click the link. The edit and submit the form and check if the document has been created, all values have been filled out correctly and that the workflow has been started and assigned to the approver.
+
+= Architecture and design =
+
+
  

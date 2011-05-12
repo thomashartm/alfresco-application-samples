@@ -3,6 +3,9 @@ package org.alfresco.extension.authentication.constraint;
 
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.alfresco.extension.authentication.aop.Credentials;
 import org.alfresco.extension.authentication.constraint.PasswordRegexConstraint;
 import org.junit.After;
@@ -24,8 +27,11 @@ public class PasswordRegexConstraintTest {
 
 	@Test
 	public void process(){
-		String allowPattern="[a-zA-Z]*";
-		constraint.setAllowPattern(allowPattern);
+		String allowPattern = "[a-zA-Z]*";
+		List<String> patterns = new ArrayList<String>();
+		patterns.add(allowPattern);
+		
+		constraint.setAllowPatterns(patterns);
 		
 		Credentials credentials = createCredentials("user", "validPassword", "oldPassword");
 		constraint.process(credentials);

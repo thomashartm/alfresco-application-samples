@@ -15,21 +15,26 @@
     
     <!-- Advices -->
     <bean id="authenticationServiceAdvice" class="org.alfresco.extension.authentication.aop.AuthenticationServiceAdvice" lazy-init="true">
-        <property name="approvers">
+        <property name="constraints">
 		  <list>
-		      <ref bean="passwordLengthConstraint" />
+		      <ref bean="passwordSimilarityConstraint" />
               <ref bean="passwordRegexConstraint" />
 		      <ref bean="passwordHistoryConstraint" />
 		  </list>
         </property>
     </bean>
 
-    <bean id="passwordLengthConstraint" class="org.alfresco.extension.authentication.constraint.PasswordLengthConstraint">
+    <bean id="passwordSimilarityConstraint" class="org.alfresco.extension.authentication.constraint.PasswordSimilarityConstraint">
         <property name="allowEqualPasswords" value="false" />
     </bean>
 
     <bean id="passwordRegexConstraint" class="org.alfresco.extension.authentication.constraint.PasswordRegexConstraint">
-        <property name="allowPattern" value="[a-zA-Z0-9]*" />
+        <property name="allowPatterns"  >
+            <list>
+                <value>^.*(?=.*[\d\W]).*$</value>
+                <value>^.*(?=.*[A-Z]).*$</value>
+            </list>
+        </property>
     </bean>
     
     <bean id="passwordHistoryConstraint" class="org.alfresco.extension.authentication.constraint.PasswordHistoryConstraint" >

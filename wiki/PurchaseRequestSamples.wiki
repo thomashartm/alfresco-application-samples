@@ -15,21 +15,57 @@ The whole project is considered to be a starting point to help new developers an
 
 The whole project is and will be work in progress as I still has some rough edges but I will constantly add functionality and round down this edges. Feel free to make suggestions improvement and for new functionality.
 
-= Project Structure =
+== Project Structure ==
 
 The project of two artifacts a repository and a share artifacts that can be deployed as simple jar files. To ease the development and to have a clear seperation on development level, the whole sample application has been split into two seperate projects.
 
 The Purchase Request repository module that contains:
-* The content model defining a PurchaseRequest content type.
-* Some behaviour for the custom content type. The behaviour triggers the creation of a request number, triggers the creation of the binary request form and starts the workflow if an assignee has been selected.  
-* The approval workflow definition including a java code to start workflows from a behaviour.
-* A simple webscript that creates a "Procurement" folder within the actual share site.
+  * The content model defining a PurchaseRequest content type.
+  * Some behaviour for the custom content type. The behaviour triggers the creation of a request number, triggers the creation of the binary request form and starts the workflow if an assignee has been selected.  
+  * The approval workflow definition including a java code to start workflows from a behaviour.
+  * A simple webscript that creates a "Procurement" folder within the actual share site.
 
 Purchase Request Share module contains:
-* The custom content types form configuration (create and edit mode)
-* A dashlet to trigger the content creation
+  * The custom content types form configuration (create and edit mode)
+  * A dashlet to trigger the content creation
+
+---- 
 
 = Installation and Configuration =
 
+_Both artifacts are mavenized so maven and some Alfresco specific prerequisites are required to build deployable repository and share artifacts._
 
+  # Make sure you have maven installed and deployed the Alfresco specific dependencies into your local maven repo. See the Gab's tutorial  to  [http://code.google.com/p/maven-alfresco-archetypes/wiki/MaintainYourRepo MaintainYourRepository] or my MS Windows specific port of Gab's bootstrap script http://blogs.alfresco.com/wp/thartmann/2011/01/09/ein-alfresco-release-in-ein-lokales-maven-repository-deployen/
+  # Check out the sources for both projects.
+  # Open a commandline for both source projects and create your IDE specific configuration files i.e. for Eclipse.
+{{{
+cd PurchaseRequest
+mvn eclipse:eclipse
+
+cd PurchaseRequestShare
+mvn eclipse:eclipse
+}}}
+  # Adjust the pom.xml's properties. Both POM files point to their deployment target directory using the *alfresco.target.dir* property within the properties section. 
+{{{
+    <properties>
+        <alfresco.target.dir>C:/.././..</alfresco.target.dir>
+}}}
+  # The custom deployJar default profile within the pom will trigger an ant-run copy process. The jar artifacts will automically be copied to the specified *alfresco.target.dir* directory during the execution of maven's install phase. Just deactivate the profile if you do not like that by setting the *activeByDefault* property to false. The Repository module will be copied to the webapps/alfresco/WEB-INF/lib directory. The Share artifact will be placed inside the tomcat/shared/lib directory.
+{{{
+<profiles>
+        <profile>
+            <id>deployJar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+}}}
+  # Build and deploy the Repository artifact {{{mvn clean install}}}
+  # Build and deploy the Share artifact {{{mvn clean install}}}
+  # Restart your Alfresco instance and check the log for errors.
+  # Login to Alfresco Share and add the Purchase Request dashlet to a  Share Site Dashboard.
+  # To verify that everything is in place and running just click the link. Edit and submit the form and check if the document has been created, all values have been filled out correctly and that the workflow has been started and assigned to the approver.
  

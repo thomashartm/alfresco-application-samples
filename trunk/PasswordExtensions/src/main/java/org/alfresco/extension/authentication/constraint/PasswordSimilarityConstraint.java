@@ -21,7 +21,6 @@ public class PasswordSimilarityConstraint implements CredentialConstraint {
 				throw new AuthenticationException("The password does not match the validation constraints.");
 			}
 		}
-		
 	}
 
 	public void setAllowEqualPasswords(boolean allowEqualPasswords) {

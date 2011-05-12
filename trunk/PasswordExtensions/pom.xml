@@ -3,60 +3,48 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.extension</groupId>
-	<artifactId>extended-password</artifactId>
+	<artifactId>password-extensions</artifactId>
 	<packaging>jar</packaging>
 	<!-- Comment the previous line and uncomment the following line if you wish 
 		to generate an Eclipse project. The Maven Eclipse plugin does the wrong thing 
 		if packaging != jar. -->
 	<!-- <packaging>amp</packaging> -->
-	<name>Alfresco Credential Extensions</name>
-	<version>0.3</version>
-
+	<name>Alfresco Password/Credential Extensions</name>
+	<version>0.5</version>
 
 	<properties>
 		<artifact.file>${project.build.directory}/${project.build.finalName}.${project.packaging}</artifact.file>
-		<alfresco.target.dir>c:/alfresco/wqs_alfresco3.4/tomcat/webapps/alfresco/WEB-INF/lib</alfresco.target.dir>
-		<java.version>1.6</java.version>
-		<alfresco.version>3.4.0</alfresco.version>
+        <alfresco.target.dir>c:/alfresco/alfresco-3.4.1ee/tomcat/webapps/alfresco/WEB-INF/lib</alfresco.target.dir>
+        <java.version>1.6</java.version>
+        <alfresco.version>3.4.1</alfresco.version>
 		<alfresco.classifier>enterprise</alfresco.classifier>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>jboss-public</id>
-			<name>JBoss Public Repository</name>
-			<url>http://repository.jboss.com/maven2</url>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestone Repository</name>
-			<url>https://extensions.springframework.org/milestone</url>
-		</repository>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshot Repository</name>
-			<url>https://extensions.springframework.org/snapshot</url>
-		</repository>
-		<repository>
-			<id>alfresco-public</id>
-			<name>Alfresco Public Repository</name>
-			<url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
-		</repository>
-		<repository>
-			<id>alfresco-employee-repository</id>
-			<name>Alfresco Employee Repository (private)</name>
-			<url>https://svn.alfresco.com/repos/field/maven</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>jboss-public</id>
+            <name>JBoss Public Repository</name>
+            <url>http://repository.jboss.com/maven2</url>
+        </repository>
+        <repository>
+            <id>alfresco-public</id>
+            <name>Alfresco Public Repository</name>
+            <url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>alfresco-employee-repository</id>
+            <name>Alfresco Employee Repository (private)</name>
+            <url>https://svn.alfresco.com/repos/field/maven</url>
+        </repository>
+    </repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>alfresco-public</id>
-			<name>Alfresco</name>
-			<url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
-		</pluginRepository>
-	</pluginRepositories>
-
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alfresco-public</id>
+            <name>Alfresco</name>
+            <url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<dependencies>
 		<dependency>

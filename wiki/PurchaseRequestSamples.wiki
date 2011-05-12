@@ -1,4 +1,6 @@
 #labels Alfresco,Share,Phase-Design,Samples,Phase-Deploy
+#sidebar TableOfContents
+
 = What are the Purchase Request Samples =
 
 The "Purchase Request" modules are a sample project that should demonstrate how to easily map a typical business procedure like the creation of a procurement approval (in a very simplified manner) to the Alfresco Repository and Alfresco Share.

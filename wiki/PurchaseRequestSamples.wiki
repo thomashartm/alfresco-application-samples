@@ -69,7 +69,4 @@ mvn eclipse:eclipse
   # Login to Alfresco Share and add the Purchase Request dashlet to a  Share Site Dashboard.
   # To verify that everything is in place and works just click the link. The edit and submit the form and check if the document has been created, all values have been filled out correctly and that the workflow has been started and assigned to the approver.
 
-= Architecture and design =
-
-
  

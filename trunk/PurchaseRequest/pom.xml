@@ -17,7 +17,7 @@
         <env>local</env>
         <artifact.file>${project.build.directory}/${project.build.finalName}.${project.packaging}</artifact.file>
         <!-- deployment directory for acceptance deployments ... points to a local alfresco instance -->
-        <alfresco.target.dir>c:/alfresco/alfresco-3.4.1ee/tomcat/webapps/alfresco/WEB-INF/lib</alfresco.target.dir>
+        <alfresco.target.dir>c:/alfresco/dev/tomcat/webapps/alfresco/WEB-INF/lib</alfresco.target.dir>
         <java.version>1.6</java.version>
         <alfresco.version>3.4.1</alfresco.version>
         <alfresco.classifier>enterprise</alfresco.classifier>
@@ -89,6 +89,13 @@
             <classifier>${alfresco.classifier}</classifier>
             <scope>provided</scope>
         </dependency>
+ 
+        <dependency>
+			<groupId>org.alfresco</groupId>
+			<artifactId>jbpm-jpdl-3.3.1</artifactId>
+			<version>3.4.0</version>
+            <scope>provided</scope>
+        </dependency> 
         
         <!-- Non-Alfresco dependencies -->
         <dependency>

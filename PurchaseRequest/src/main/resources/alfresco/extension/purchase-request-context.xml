@@ -51,4 +51,14 @@
         <constructor-arg index="0" ref="ServiceRegistry" />
     </bean>
 
+    <!-- Actions -->
+    <bean id="set-progress-flag" class="org.alfresco.extension.procurement.action.ChangeRequestState" parent="action-executer">
+        <property name="nodeService">
+            <ref bean="NodeService" />
+        </property>
+        <property name="publicAction">
+            <value>false</value>
+        </property>
+    </bean>
+
 </beans>

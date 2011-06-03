@@ -20,27 +20,48 @@
 	<task-node name="review">
 		<task name="wf:reviewTask" swimlane="reviewer">
 			<event type="task-create">
-			 <script>
-             </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    <variable name="bpm_package" access="read" />
+                    <expression>
+                        var setProgressAction = actions.create("set-progress-flag");
+                        setProgressAction.parameters["progress"] = "In Review";
+                        for (var i = 0; i &lt; bpm_package.children.length; i++) {
+                            setProgressAction.execute(bpm_package.children[i]);
+                        }           
+                    </expression>   
+                </script>
+			</action>
+
 			</event>
 		</task>
 		
 		<transition name="approve" to="approved">
-			<action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-				<script>
-					<expression>
-						logger.log("Hello purchaseRequest has been approved!");
-                    </expression>
-				</script>
-			</action>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    <variable name="bpm_package" access="read" />
+                    <expression>
+                        var setProgressAction = actions.create("set-progress-flag");
+                        setProgressAction.parameters["progress"] = "Approved";
+                        for (var i = 0; i &lt; bpm_package.children.length; i++) {
+                            setProgressAction.execute(bpm_package.children[i]);
+                        }           
+                    </expression>   
+                </script>
+            </action>
 		</transition>
 		
 		<transition name="reject" to="rejected">
             <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                 <script>
+                    <variable name="bpm_package" access="read" />
                     <expression>
-                        logger.log("Hello purchaseRequest has been rejected!");
-                    </expression>
+                        var setProgressAction = actions.create("set-progress-flag");
+                        setProgressAction.parameters["progress"] = "Rejected";
+                        for (var i = 0; i &lt; bpm_package.children.length; i++) {
+                            setProgressAction.execute(bpm_package.children[i]);
+                        }           
+                    </expression>   
                 </script>
             </action>
         </transition>

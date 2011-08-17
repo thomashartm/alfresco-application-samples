@@ -1,8 +1,0 @@
-<webscript>
-  <shortname>ZipStreamWebscript</shortname>
-  <description>
-  <![CDATA[Stream the content's of a folder as a .zip content file]]>
-  </description>
-  <url>/stream/zipfile</url>
-  <authentication>user</authentication>
-</webscript>

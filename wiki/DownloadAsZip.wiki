@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+The "download as zip" module contains a toolbar action that allows to download multiple files within a folder at once, by compressing them into a zip and streaming down the zip file.
+
+= Details =
+
+The "download as zip" module consists of a toolbar action and a java backed webscript compress and to stream the zip.
+
+

@@ -8,4 +8,7 @@ The "download as zip" module contains a toolbar action that allows to download m
 
 The "download as zip" module consists of a toolbar action and a java backed webscript compress and to stream the zip.
 
+http://alfresco-application-samples.googlecode.com/issues/attachment?aid=30000000&name=downloadaszip-menu_guided.PNG&token=772e85eec175706b1dd63838fa42a54e&inline=1
 
+
+http://alfresco-application-samples.googlecode.com/issues/attachment?aid=30000001&name=downloadaszip-dialog.PNG&token=2678bdc3af99ee71db713d4c2e75d90f&inline=1

@@ -23,7 +23,7 @@ echo_outcome()
 
 echo_usage()
 {
-   echo -e "Usage\t\t: `basename $0` /path/to/war-or-zip-bundle "
+   echo -e "Usage\t\t: `basename $0` /path/to/war-or-zip-bundle clean"
    echo -e "Usage\t\t: Use default option to choose the default alfresco package"
 
    exit 1

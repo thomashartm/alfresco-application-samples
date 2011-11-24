@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+	
+	<!-- Webscripts -->
+    <bean id="webscript.net.thartm.treeutil.bulk-nodecreation-run.get"
+        class="net.thartm.treeutil.webscripts.BulkNodeCreationWebscript"
+        parent="webscript">
+        <constructor-arg index="0" ref="ServiceRegistry" />
+        <constructor-arg index="1" ref="bulkNodeCreator" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.treeutil.bulk-nodecreation-status.get"
+        class="net.thartm.treeutil.webscripts.BulkNodeCreationStatusWebscript"
+        parent="webscript">
+        <constructor-arg index="0" ref="bulkJobStatus" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.treeutil.bulk-treecreation-run.get"
+        class="net.thartm.treeutil.webscripts.BulkNodeHierarchyWebscript"
+        parent="webscript">
+        <constructor-arg index="0" ref="ServiceRegistry" />
+        <constructor-arg index="1" ref="bulkNodeCreator" />
+    </bean>
+    
+    <!-- Services -->
+    <bean id="bulkNodeCreator" class="net.thartm.treeutil.nodecreation.SimpleBulkNodeCreatorImpl">
+		<constructor-arg index="0" ref="nodeCreationHelper" />
+    	<constructor-arg index="1" ref="bulkJobStatus" />
+    </bean>
+    
+    <bean id="treeCreator" class="net.thartm.treeutil.bulk.nodecreation.TreeNodeCreatorImpl">
+		<constructor-arg index="0" ref="nodeCreationHelper" />
+    	<constructor-arg index="1" ref="bulkJobStatus" />
+    	<constructor-arg index="1" ref="dateUtil" />
+    </bean>
+    
+    <bean id="nodeCreationHelper" class="net.thartm.treeutil.bulk.executor.NodeCreationHelper">
+    	<constructor-arg index="0" ref="transactionService" />
+    	<constructor-arg index="1" ref="contentService" />
+    	<constructor-arg index="2" ref="fileFolderService" />
+    	<constructor-arg index="3" ref="nodeService" />
+    </bean>
+    
+    <bean id="bulkJobStatus" class="net.thartm.treeutil.bulk.nodecreation.BulkJobStatus" />
+    
+    <bean id="dateUtil" class="net.thartm.treeutil.bulk.util.DateUtil" />
+</beans> 

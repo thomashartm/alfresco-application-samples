@@ -1,0 +1,12 @@
+<webscript>
+  <shortname>Batch tree creation</shortname>
+  <description>
+  Creates the defined number of nodes at the parent destination based on the content template.
+  The nodes are copied to a folder structure based on a generated, random timestamp.
+  This is done to balance the tree. 
+  The main purpose of this script is to create a large repository for testing purposes.
+  </description>
+  <url>/repotools/bulk/createtree?parent={parent}&amp;sample={sample}&amp;number={number}</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+</webscript>

@@ -1,0 +1,38 @@
+<model name="tu:model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Tree Util Model</description>
+	<author>Thomas Hartmann</author>
+	<version>1.0</version>
+
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+
+	<namespaces>
+		<namespace
+			uri="http://www.alfresco.com/model/extdended/treeutil/1.0"
+			prefix="tu" />
+	</namespaces>
+
+	<types>
+		<!-- Incoming documents -->
+		<type name="tu:record">
+			<title>Test Record</title>
+			<parent>cm:content</parent>
+			<properties>
+	
+				<property name="tu:id">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+			</properties>
+		</type>
+	</types>  
+</model>

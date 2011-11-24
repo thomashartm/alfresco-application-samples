@@ -1,0 +1,11 @@
+<webscript>
+  <shortname>Batch node creation</shortname>
+  <description>
+  Creates the defined number of nodes at the parent destination based on the content template.
+  Used for debugging and bug tracking purposes. 
+  To quickly ramp up large amounts of data within a single folder.
+  </description>
+  <url>/repotools/bulk/createnodes?parent={parent}&amp;sample={sample}&amp;number={number}</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+</webscript>

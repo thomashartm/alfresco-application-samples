@@ -1,0 +1,2 @@
+http://localhost:8080/alfresco/service/
+repotools/nodes/create?parent=workspace://SpacesStore/887d76f7-d00f-4050-a629-2d8edddc4e5f&sample=workspace://SpacesStore/37a408de-1865-4d27-b322-60d8e9b1cd30&number=10

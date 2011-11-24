@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Bulk node creation status</shortname>
+  <description>
+  </description>
+  <url>/repotools/bulk/createnodes/status</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+</webscript>

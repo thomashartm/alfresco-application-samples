@@ -15,14 +15,15 @@
 
 # Note that quoting permits embedding whitespace.
 ALFRESCO_BASE_DIR=c:\/alfresco
-DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise4.0/4.0.0b/alfresco-enterprise-4.0.0b.zip
+# DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise4.0/4.0.0b/alfresco-enterprise-4.0.0b.zip
+DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise3.4/3.4.5/alfresco-enterprise-3.4.5.zip 
 TOMCAT_BASE_ARCHIVE_LOCATION=/home/thomas/software/tomcat/apache-tomcat-6.0.33.tar.gz
 MYSQL_DRIVER_LOCATION=/home/thomas/software/mysql/mysql-connector-java-5.1.7-bin.jar
 SPP_AMP_LOCATION="/cygdrive/c/software/alfresco/enterprise4.0/4.0.0b/alfresco-enterprise-spp-4.0.0b.zip"
 
 # 3rd party lib locations - please use fully escaped paths 
-LOC_IMG="$ALFRESCO_BASE_DIR\/bin\/ImageMagick"
-LOC_SWF="$ALFRESCO_BASE_DIR\/bin\/swftools\/pdf2swf"
+LOC_IMG="c:\/alfresco\/bin\/ImageMagick"
+LOC_SWF="c:\/alfresco\/bin\/swftools\/pdf2swf"
 LOC_SOFFICE="c:\/Program Files (x86)\/OpenOffice.org 3\/program\/soffice"
 SOFFICE_ENABLED="false"
 
@@ -31,8 +32,8 @@ ALF_DB_USER="root"
 ALF_DB_PASSWORD=""
 
 #Filesystems
-IMAP_ENABLED="true"
-CIFS_ENABLED="true"
+IMAP_ENABLED="false"
+CIFS_ENABLED="false"
 FTP_ENABLED="false"
 NFS_ENABLED="false"
 
@@ -67,11 +68,11 @@ if [ ! -f ${INPUT_ARCHIVE_PATH} ]; then
 fi
 
 # find out version
-#ALF_VERSION=$(echo $INPUT_ARCHIVE_NAME | sed -e 's/.*-\(.*\)\..*/\1/g') # between last - and last .
-ALF_VERSION="demo"
+ALF_VERSION=$(echo $INPUT_ARCHIVE_NAME | sed -e 's/.*-\(.*\)\..*/\1/g') # between last - and last .
+#ALF_VERSION="demo"
 ALF_VERSION_DB_FRIENDLY=$(echo $ALF_VERSION | sed -e 's/\.//g' | tr '-' '_')
 
-DEST_DIR="$ALFRESCO_BASE_DIR\/$ALF_VERSION"
+DEST_DIR="$ALFRESCO_BASE_DIR/$ALF_VERSION"
 BIN_DIR=${DEST_DIR}/bin 
 #DIR_ROOT="/opt/alfresco/data/$ALF_VERSION"
 DIR_ROOT="$ALFRESCO_BASE_DIR\/data\/$ALF_VERSION"

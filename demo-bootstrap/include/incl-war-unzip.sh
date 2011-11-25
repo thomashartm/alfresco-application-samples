@@ -9,6 +9,7 @@ echo_outcome $?
 if [ ! -d ${TOMCAT_ROOT} ]; then  
     echo -n "renaming tomcat base directory to ${TOMCAT_ROOT} ..."   
     mv ${DEST_DIR}/*-tomcat-* ${TOMCAT_ROOT}
+    
     echo_outcome $?
 fi
 
@@ -25,7 +26,8 @@ if [ "$ARCHIVE_EXTENSION" == "zip" ];then
     # extracting tomcat specific stuff  and webapps
     echo -n "extracting web-server directory into ${TOMCAT_ROOT} ..."
 	  cp -R ${TEMP_DIR}/web-server/* ${TOMCAT_ROOT}
-	  chmod -R 777 ${TOMCAT_ROOT}
+	  mkdir ${TOMCAT_SHARED_DIR}/lib
+	  chmod -R 755 ${TOMCAT_ROOT}
 	  echo_outcome $?
 	  
 	  # extracting licence information
@@ -50,6 +52,7 @@ if [ "$ARCHIVE_EXTENSION" == "zip" ];then
 	   echo -n "Windows environment detected. Unpacking environment specific files ..."
      cp -R ${TEMP_DIR}/bin/*.bat ${BIN_DIR}
 	   cp -R ${TEMP_DIR}/bin/*.dll ${TOMCAT_ROOT}/bin
+	   cp -R ${TEMP_DIR}/bin/*.dll ${BIN_DIR}
 	   echo_outcome $?
 	  fi
 	  

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Audit xmlns="http://www.alfresco.org/repo/audit/model/3.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.alfresco.org/repo/audit/model/3.2 alfresco-audit-3.2.xsd">
+
+	<DataExtractors>
+		<DataExtractor name="simpleValue" registeredName="auditModel.extractor.simpleValue" />
+		<DataExtractor name="nullValue" registeredName="auditModel.extractor.nullValue" />
+		<DataExtractor name="nodeName" registeredName="auditModel.extractor.nodeName" />
+		<DataExtractor name="nodeType" registeredName="auditModel.extractor.nodeType" />
+	</DataExtractors>
+
+	<PathMappings>
+		<PathMap source="/alfresco-api/post/ContentService/getReader"
+			target="/auditfileaccessextractor" />
+	</PathMappings>
+
+	<Application name="AuditFileAccessExtractors" key="auditfileaccessextractor">
+		<AuditPath key="args">
+			<AuditPath key="nodeRef">
+				<RecordValue key="a" dataExtractor="nodeName" />
+				<RecordValue key="b" dataExtractor="simpleValue" />
+			</AuditPath>
+		</AuditPath>
+	</Application>
+
+</Audit>

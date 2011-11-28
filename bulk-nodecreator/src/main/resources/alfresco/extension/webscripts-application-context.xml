@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+	
+	<!-- Webscripts -->
+	
+    <bean id="webscript.net.thartm.treeutil.bulk-nodecreation-run.get"
+        class="net.thartm.treeutil.webscripts.CreateNodesInFolderGet"
+        parent="webscript">
+        <constructor-arg index="0" ref="simpleNodeCreator" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.treeutil.bulk-nodecreation-status.get"
+        class="net.thartm.treeutil.webscripts.BulkNodeCreationStatusWebscript"
+        parent="webscript">
+        <constructor-arg index="0" ref="bulkJobStatus" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.treeutil.bulk-treecreation-run.get"
+        class="net.thartm.treeutil.webscripts.CreateNodeHierarchyGet"
+        parent="webscript">
+        <constructor-arg index="0" ref="treeCreator" />
+    </bean>
+    
+    <!-- Business logic and service beans -->
+    
+    <bean id="bulkJobStatus" class="net.thartm.treeutil.bulk.nodecreation.BulkJobStatus" />
+    
+    <bean id="simpleNodeCreator" class="net.thartm.treeutil.bulk.nodecreation.SimpleBulkNodeCreatorImpl" parent="abstractNodeCreator">
+    	<constructor-arg index="0" ref="bulkJobStatus" />
+    </bean>
+    
+    <bean id="treeCreator" class="net.thartm.treeutil.bulk.nodecreation.TreeNodeCreatorImpl" parent="abstractNodeCreator">
+        <constructor-arg index="0" ref="bulkJobStatus" />
+        <constructor-arg index="1" ref="contentDataHelper" />
+    </bean>
+    
+    
+    <bean id="abstractNodeCreator" abstract="true" class="net.thartm.treeutil.bulk.nodecreation.AbstractNodeCreator">
+        <property name="contentDataHelper" ref="contentDataHelper" />
+        <property name="folderHierarchyHelper" ref="folderHierarchyHelper" />
+        
+        <!-- Unproxied alfresco services -->
+        <property name="transactionService" ref="transactionService" />
+        <property name="fileFolderService"  ref="fileFolderService" />
+        <property name="nodeService" ref="nodeService" />
+        
+    </bean>
+    
+    <!-- Utility and helper beans -->  
+     
+    <bean id="contentDataHelper" class="net.thartm.treeutil.bulk.util.ContentDataHelper">
+    	<constructor-arg index="0" ref="contentService" />
+    	<constructor-arg index="1" ref="nodeService" />
+    </bean>
+    
+    <bean id="folderHierarchyHelper" class="net.thartm.treeutil.bulk.util.FolderHierarchyHelper" >
+    </bean>
+</beans> 

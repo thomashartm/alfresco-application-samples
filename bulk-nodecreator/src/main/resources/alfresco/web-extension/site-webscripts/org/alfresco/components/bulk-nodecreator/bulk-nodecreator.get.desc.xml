@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>Audit Admin Console</shortname>
+  <description>Audit Administration Console</description>
+  <url>/components/bulk-nodecreator/control</url>
+  <family>admin-console</family>
+</webscript>

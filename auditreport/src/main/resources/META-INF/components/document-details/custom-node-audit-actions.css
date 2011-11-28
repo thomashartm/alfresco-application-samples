@@ -1,0 +1,45 @@
+.node-properties
+{
+  background-color: #ffffff;
+  width:200%;
+}
+.node-properties table
+{
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+
+.node-properties td
+{
+
+    border-color:#c7dbeb;
+    border-width: 0.5px;
+    border-top-style:none;
+    border-right-style:none;
+    border-bottom-style:solid;
+    border-left-style:none;
+}
+
+.node-properties .property-label
+{
+   font-size: 100%;
+   color: #606060;
+   padding-right: 0.3em;
+   text-align:left;
+}
+
+.node-properties .property-value
+{
+   font-size: 100%;
+   color: #333333;
+   text-align:left;
+   width:40%;
+}
+
+.node-properties .property-header
+{
+   font-size: 110%;
+   font-weight:bold;
+   color: #000000;
+   text-align:left;
+}

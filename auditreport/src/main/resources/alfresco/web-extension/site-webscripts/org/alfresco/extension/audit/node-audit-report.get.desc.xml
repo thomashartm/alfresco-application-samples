@@ -1,0 +1,5 @@
+<webscript>
+   <shortname>Node Audit Report</shortname>
+   <description>Component displays the audit report for a certain node</description>
+   <url>/components/audit/node</url>
+</webscript>

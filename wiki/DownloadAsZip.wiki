@@ -1,4 +1,5 @@
 #summary One-sentence summary of this page.
+#labels share,javabackedwebscript
 
 = Introduction =
 
@@ -17,4 +18,24 @@ http://alfresco-application-samples.googlecode.com/issues/attachment?aid=3000000
 
 = Installation = 
 
-... coming soon
+The module consists of two components: 
+* a Share part that contains the UI 
+* a repository part that contains a java backed webscript.
+The Repo part is responsible for the whole zip packaging and streaming work.  
+The module is intended to be deployed as a JAR file. 
+The build script contains the whole amp packaging targets, too. But to be honest I never tested it with this module.
+
+=== Checkout and build ===
+
+Checkout the project using svn co http://code.google.com/p/alfresco-application-samples/source/browse/trunk/DownloadAsZip
+
+To build the JAR file, run the following command from the base project 
+directory.
+{{{
+ant clean dist-jar
+}}}
+
+=== One fits all===
+The JAR file contains the Share extension as well as the repo extension So just drop a copy of the JAR into each WEB-INF/lib folder (alfresco/WEB-INF/lib and the share/WEB-INF/lib directories) and restart both.
+Avoid to deploy into shared/lib as long as Share and the Repository run within the same instance as the may occur classloading issues when the repository tries to load the JAR.
+ 

@@ -16,10 +16,11 @@
 # Note that quoting permits embedding whitespace.
 ALFRESCO_BASE_DIR=c:\/alfresco
 # DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise4.0/4.0.0b/alfresco-enterprise-4.0.0b.zip
-DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise3.4/3.4.5/alfresco-enterprise-3.4.5.zip 
+DEFAULT_ALFRESCO_RELEASE=/cygdrive/c/software/alfresco/enterprise3.4/3.4.6/alfresco-enterprise-3.4.6.zip
+SPP_AMP_LOCATION=/cygdrive/c/software/alfresco/enterprise3.4/3.4.6/alfresco-enterprise-spp-3.4.6.zip
 TOMCAT_BASE_ARCHIVE_LOCATION=/home/thomas/software/tomcat/apache-tomcat-6.0.33.tar.gz
 MYSQL_DRIVER_LOCATION=/home/thomas/software/mysql/mysql-connector-java-5.1.7-bin.jar
-SPP_AMP_LOCATION="/cygdrive/c/software/alfresco/enterprise4.0/4.0.0b/alfresco-enterprise-spp-4.0.0b.zip"
+
 
 # 3rd party lib locations - please use fully escaped paths 
 LOC_IMG="c:\/alfresco\/bin\/ImageMagick"

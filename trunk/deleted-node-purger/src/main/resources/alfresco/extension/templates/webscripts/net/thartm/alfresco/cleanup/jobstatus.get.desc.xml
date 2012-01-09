@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>cleanup job status</shortname>
+  <description>
+    Displays cleanup job's status.
+  </description>
+  <url>/cleanup/status</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+</webscript>

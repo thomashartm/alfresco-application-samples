@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+	
+	<!-- Webscripts -->
+    <bean id="webscript.net.thartm.alfresco.cleanup.delete.get"
+        class="net.thartm.alfresco.cleanup.webscript.PurgeDeletedNodesGet"
+        parent="webscript">
+        <constructor-arg index="0" ref="asyncNodeRemovalWorker" />
+        <constructor-arg index="1" ref="jobStatus" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.alfresco.cleanup.jobstatus.get"
+        class="net.thartm.alfresco.cleanup.webscript.RemovalJobStatusGet"
+        parent="webscript">
+        <constructor-arg index="0" ref="jobStatus" />
+    </bean>
+    
+    <bean id="webscript.net.thartm.alfresco.cleanup.cancel.get"
+        class="net.thartm.alfresco.cleanup.webscript.CancelRemovalJobGet"
+        parent="webscript">
+        <constructor-arg index="0" ref="asyncNodeRemovalWorker" />
+        <constructor-arg index="1" ref="jobStatus" />
+    </bean>
+    
+    <!-- Business logic and service beans -->
+    <bean id="asyncNodeRemovalWorker" class="net.thartm.alfresco.cleanup.CleanupWorker" >
+        <constructor-arg index="0" ref="ServiceRegistry" />
+        <constructor-arg index="1" ref="nodeDAO" />
+        <constructor-arg index="2" ref="jobStatus" />
+    </bean>
+     
+    <bean id="jobStatus" class="net.thartm.alfresco.cleanup.JobStatus" />
+        
+</beans> 

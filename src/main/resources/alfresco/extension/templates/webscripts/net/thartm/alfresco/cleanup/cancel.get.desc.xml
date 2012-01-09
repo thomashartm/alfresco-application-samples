@@ -1,9 +1,0 @@
-<webscript>
-  <shortname>Cancel a running job</shortname>
-  <description>
-   Cancel a running job
-  </description>
-  <url>/cleanup/cancel</url>
-  <format default="html">argument</format>
-  <authentication>admin</authentication>
-</webscript>

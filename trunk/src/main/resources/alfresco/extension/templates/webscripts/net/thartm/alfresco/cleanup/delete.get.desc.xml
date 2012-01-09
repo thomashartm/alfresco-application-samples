@@ -1,9 +1,0 @@
-<webscript>
-  <shortname>Display removal status</shortname>
-  <description>
-    Delete old nodes
-  </description>
-  <url>/cleanup/delete?maxcommit={maxcommit}&amp;interval={interval}&amp;stopcommit={stopcommit?}</url>
-  <format default="html">argument</format>
-  <authentication>admin</authentication>
-</webscript>
